@@ -1,0 +1,73 @@
+/* Colors: change the palette here */
+:root{--bg:#faf6ee;--card:#fff;--ink:#2a2118;--mut:#6b5d4d;--acc:#b4442b;--acc2:#2f6b4f;--line:#e4d9c6;--hi:#f3e7cf;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#17130f;--card:#241e17;--ink:#f1e8d8;--mut:#b5a58e;--acc:#ef8a6c;--acc2:#7fc9a0;--line:#3a3025;--hi:#31281d;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,"Times New Roman",serif}
+a{color:var(--acc2);word-break:break-word}
+.note{font:.85rem system-ui,sans-serif;color:var(--mut)}
+
+/* Header */
+header{padding:48px 20px 28px;max-width:900px;margin:auto}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:.2em 0}
+.kick{font:600 .8rem/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.sub{color:var(--mut);max-width:60ch}
+
+/* Hidden radio inputs drive tabs and toggles */
+.tab,.ctl{position:absolute;opacity:0;pointer-events:none}
+
+/* Tab bar */
+nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5;display:flex;gap:6px;overflow-x:auto;padding:8px 20px;justify-content:center}
+nav label,.seg label{font:600 .9rem system-ui,sans-serif;border:1px solid var(--line);background:var(--card);padding:8px 16px;border-radius:99px;cursor:pointer;white-space:nowrap}
+#t1:checked~nav [for=t1],#t2:checked~nav [for=t2],#t3:checked~nav [for=t3],#t4:checked~nav [for=t4]{background:var(--acc);color:#fff;border-color:var(--acc)}
+
+/* Show only the selected section */
+main{max-width:900px;margin:auto;padding:24px 20px 60px}
+main section{display:none}
+#t1:checked~main #issue,#t2:checked~main #causes,#t3:checked~main #solution,#t4:checked~main #sources{display:block}
+h2{font-size:1.7rem;margin:.2em 0 .4em}
+h3{font-size:1.15rem;margin:1.4em 0 .4em}
+
+/* Stat cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat summary{cursor:pointer;list-style:none}
+.stat summary::-webkit-details-marker{display:none}
+.stat b{display:block;font-size:1.9rem;color:var(--acc);font-family:system-ui,sans-serif}
+.stat small{display:block;color:var(--mut);font-size:.82rem;margin-top:6px}
+.stat .more{margin-top:8px;font-size:.85rem;border-top:1px dashed var(--line);padding-top:8px}
+
+/* Students / Workers toggle */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;margin-bottom:12px}
+.seg label{border-radius:8px;padding:6px 14px;font-size:.85rem;background:var(--bg)}
+#w1:checked~.seg [for=w1],#w2:checked~.seg [for=w2]{background:var(--acc2);color:#fff;border-color:var(--acc2)}
+.pane{display:none}
+#w1:checked~.p1,#w2:checked~.p2{display:block}
+.pane ul{padding-left:20px;margin:.3em 0}
+.pane li{margin:.5em 0}
+
+/* Timeline */
+.timeline{list-style:none;margin:12px 0;padding:0 0 0 18px;border-left:3px solid var(--acc)}
+.timeline li{margin:0 0 16px;position:relative;padding-left:12px}
+.timeline li::before{content:"";position:absolute;left:-27px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--acc);border:2px solid var(--bg)}
+.timeline b{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--acc);display:block}
+
+/* Myth vs reality, root causes */
+details.cause,details.myth{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}
+details.cause summary,details.myth summary{cursor:pointer;font-weight:700}
+details.cause p,details.myth p{margin:.6em 0 0;color:var(--mut)}
+details.myth summary::before{content:"Myth: ";color:var(--acc)}
+details.myth p::before{content:"Reality: ";font-weight:700;color:var(--acc2)}
+
+/* Solution cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.cards article{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--acc2);border-radius:12px;padding:16px}
+.cards h3{margin:.1em 0 .3em;font-size:1.05rem}
+.cards p{margin:.3em 0;font-size:.92rem;color:var(--mut)}
+.tag{display:inline-block;font:600 .7rem system-ui,sans-serif;background:var(--hi);padding:2px 8px;border-radius:99px}
+
+/* Callout and sources */
+.callout{background:var(--hi);border-left:4px solid var(--acc);padding:12px 16px;border-radius:8px;font-size:.92rem}
+ol.src{padding-left:20px;font:.88rem/1.5 system-ui,sans-serif}
+ol.src li{margin:8px 0}
+footer{max-width:900px;margin:auto;padding:0 20px 40px}
